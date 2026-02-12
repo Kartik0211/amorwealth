@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Slider } from '@/components/ui/slider';
 import { Decimal } from 'decimal.js';
-import { PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
+import { DonutChart } from '@/components/charts/DonutChart';
 
 export default function EmiCalculatorPage() {
   const [loanAmount, setLoanAmount] = useState(100000);
@@ -41,12 +41,13 @@ export default function EmiCalculatorPage() {
     setTotalInterest(totalInterestDecimal.toDP(2).toNumber());
   };
 
-  const data = [
-    { name: 'Principal', value: loanAmount },
-    { name: 'Interest', value: totalInterest },
-  ];
-
-  const COLORS = ['#4A55A2', '#FF9800']; // Amorwealth Indigo and Alert Orange
+  const ring = {
+    data: [
+      { name: 'Principal', value: loanAmount },
+      { name: 'Interest', value: totalInterest },
+    ],
+    colors: ['#4A55A2', '#FF9800'],
+  };
 
   return (
     <div className="container mx-auto p-4">
@@ -129,24 +130,7 @@ export default function EmiCalculatorPage() {
                 <p className="text-4xl font-bold">₹ {emi}</p>
 
                 <div className="w-full mt-4">
-                    <PieChart width={300} height={300} className='mx-auto'>
-                        <Pie
-                            data={data}
-                            cx="50%"
-                            cy="50%"
-                            innerRadius={60}
-                            outerRadius={80}
-                            fill="#8884d8"
-                            paddingAngle={5}
-                            dataKey="value"
-                        >
-                            {data.map((entry, index) => (
-                            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                            ))}
-                        </Pie>
-                        <Tooltip />
-                        <Legend />
-                    </PieChart>
+                  <DonutChart rings={[ring]} />
                 </div>
 
                 <div className="w-full mt-4 grid grid-cols-2 gap-4 text-center">
