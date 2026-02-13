@@ -1,11 +1,11 @@
 import Link from 'next/link';
 
 const categories = [
-  { name: 'Income Tax', path: '/calculators/tax' },
-  { name: 'Investment', path: '/calculators/investment' },
-  { name: 'Loan & Debt', path: '/calculators/loan' },
-  { name: 'Insurance', path: '/calculators/insurance' },
-  { name: 'Retirement', path: '/calculators/retirement' },
+  { name: 'Income Tax', path: '/calculators/advance-tax' },
+  { name: 'Investment', path: '/calculators/gratuity' },
+  { name: 'Loan & Debt', path: '/calculators/loan-prepayment' },
+  { name: 'Insurance', path: '/calculators/insurance-surrender' },
+  { name: 'Retirement', path: '/calculators/retirement-corpus' },
 ];
 
 export function Sidebar() {
